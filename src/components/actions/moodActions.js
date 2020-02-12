@@ -4,12 +4,12 @@ export const drinkCoffee = () => ({
 });
 
 export const EAT_SNACK = 'EAT_SNACK';
-export const eatSnacks = () => ({
+export const eatSnack = () => ({
   type: EAT_SNACK
 });
 
 export const TAKE_NAP = 'TAKE_NAP';
-export const takeNaps = () => ({
+export const takeNap = () => ({
   type: TAKE_NAP
 });
 
