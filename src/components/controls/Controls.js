@@ -4,19 +4,23 @@ import styles from './Controls.css';
 
 const Controls = ({ actions, handleSelection }) => (
   <section className={styles.Controls}>
-    {actions.map(({ name, text, count }) => (
-      <button key={name} onClick={() => handleSelection(name)}>
-        {text || name} {!!count && `- ${count}`}
-      </button>
-    ))}
+    <button onClick={() => {}}></button>
+    <button> </button>
   </section>
 );
 
+// {actions.map(({ name, text, count }) => (
+//   <button key={name} onClick={() => handleSelection(name)}>
+//     {text || name} {!!count && `- ${count}`}
+//   </button>
+// ))}
 Controls.propTypes = {
-  actions: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    text: PropTypes.string
-  })).isRequired,
+  actions: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      text: PropTypes.string
+    })
+  ).isRequired,
   handleSelection: PropTypes.func.isRequired
 };
 
