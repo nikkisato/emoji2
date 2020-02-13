@@ -1,4 +1,4 @@
-import React, { Component, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import Controls from '../components/controls/Controls';
 import Face from '../components/face/Face';
 import {
@@ -8,29 +8,27 @@ import {
   study
 } from '../actions/moodActions';
 import { getFace } from '../selectors/moodSelectors';
-import { reducer } from '../reducers/moodReducers';
+import reducer from '../reducers/moodReducers';
 
-export default class Moods extends Component {
-  const [mood, dispatch] = useReducer(reducer, [])
+const actions = [
+  { name: 'DRINK_COFFEE', text: 'Drink Coffee', stateName: 'coffees' },
+  { name: 'EAT_SNACK', text: 'Snack', stateName: 'snacks' },
+  { name: 'TAKE_NAP', text: 'Nap', stateName: 'naps' },
+  { name: 'STUDY', text: 'Study', stateName: 'studies' }
+];
+export default function Moods() {
+  const [state, dispatch] = useReducer(reducer, {
+    coffees: 0,
+    naps: 0,
+    studies: 0,
+    snacks: 0
+  });
+  const face = getFace(state);
 
- //accumulator = state
- //current value = value 
-
-  render() {
-    const face = getFace(this.state);
-    const controlActions = actions.map(action => ({
-      ...action,
-      count: this.state[action.stateName]
-    }));
-
-    return (
-      <>
-        <Controls
-          actions={controlActions}
-          handleSelection={this.handleSelection}
-        />
-        <Face emoji={face} />
-      </>
-    );
-  }
+  return (
+    <>
+      <Controls actions={actions} dispatch={dispatch} />
+      <Face emoji={face} />
+    </>
+  );
 }

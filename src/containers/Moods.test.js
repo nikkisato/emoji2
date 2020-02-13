@@ -1,6 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Moods, { isTired, isHyper, isEducated, isHungry, getFace } from './Moods';
+import Moods, {
+  isTired,
+  isHyper,
+  isEducated,
+  isHungry,
+  getFace
+} from './Moods';
+// import {
+//   isTired,
+//   isHyper,
+//   isEducated,
+//   isHungry
+// } from '../selectors/moodSelector.test';
 
 describe('Moods', () => {
   describe('mood selectors', () => {
@@ -49,19 +61,27 @@ describe('Moods', () => {
     });
 
     it('is crazy if hyper', () => {
-      expect(getFace({ coffees: 4, naps: 0, snacks: 0, studies: 0 })).toEqual('🤮');
+      expect(getFace({ coffees: 4, naps: 0, snacks: 0, studies: 0 })).toEqual(
+        '🤮'
+      );
     });
 
     it('is mindblown if educated', () => {
-      expect(getFace({ coffees: 1, naps: 0, snacks: 1, studies: 3 })).toEqual('🤯');
+      expect(getFace({ coffees: 1, naps: 0, snacks: 1, studies: 3 })).toEqual(
+        '🤯'
+      );
     });
 
     it('is angry if hungry', () => {
-      expect(getFace({ coffees: 1, naps: 0, snacks: 0, studies: 0 })).toEqual('😡');
+      expect(getFace({ coffees: 1, naps: 0, snacks: 0, studies: 0 })).toEqual(
+        '😡'
+      );
     });
 
     it('is happy if not tired, hungry, educated, or hungry', () => {
-      expect(getFace({ coffees: 1, naps: 0, snacks: 1, studies: 0 })).toEqual('😀');
+      expect(getFace({ coffees: 1, naps: 0, snacks: 1, studies: 0 })).toEqual(
+        '😀'
+      );
     });
   });
 
